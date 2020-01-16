@@ -38,25 +38,32 @@ def checkOperator(oper):
     return True
 
 
+calculatorWithCach = cache_decorator(calculator)
+
+
 if __name__ == '__main__':
+    isFinished = 'n'
+
     # Тут было бы неплохо обрабатывать ошибку в случае передачи некорректных символов
+    while isFinished != 'y':
+        try:
+            a = int(input('Введите целое число: '))
+        except:
+            print('Вы ввели не целое число!')
+            exit(0)
 
-    try:
-        a = int(input('Введите целое число: '))
-    except:
-        print('Вы ввели не целое число!')
-        exit(0)
+        try:
+            b = int(input('Введите целое число: '))
+        except:
+            print('Вы ввели не целое число!')
+            exit(0)
 
-    try:
-        b = int(input('Введите целое число: '))
-    except:
-        print('Вы ввели не целое число!')
-        exit(0)
+        operation = input('Введите операцию из списка: + | - | / | * | ** \n')
+        operation = operation.strip()
 
-    operation = input('Введите операцию из списка: + | - | / | * | ** \n')
-    operation = operation.strip()
+        if not checkOperator(operation):
+            exit(0)
 
-    if not checkOperator(operation):
-        exit(0)
+        print('Результат: ',  calculatorWithCach(a, b, operation))
 
-    print('Результат: ', calculator(a, b, operation))
+        isFinished = input('Закончить? y|n \n')
