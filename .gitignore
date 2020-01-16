@@ -1,0 +1,10 @@
+/node_modules
+/dist
+notes.txt
+yarn-error.log
+.idea
+.cache
+.DS_Store
+js/dev/hhApiAreas.json
+.vscode/
+__pycache__
